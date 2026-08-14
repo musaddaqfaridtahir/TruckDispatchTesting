@@ -5,6 +5,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import DispatchModal from '@/components/DispatchModal';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({
   children,
@@ -37,6 +38,7 @@ export default function RootLayout({
           isOpen={isModalOpen} 
           onClose={() => setIsModalOpen(false)} 
         />
+        <Analytics />
       </body>
     </html>
   );
