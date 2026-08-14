@@ -5,6 +5,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import DispatchModal from '@/components/DispatchModal';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function RootLayout({
   children,
@@ -37,6 +38,8 @@ export default function RootLayout({
           isOpen={isModalOpen} 
           onClose={() => setIsModalOpen(false)} 
         />
+
+        <SpeedInsights />
       </body>
     </html>
   );
