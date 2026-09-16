@@ -177,16 +177,7 @@ export default function Footer() {
         {/* Bottom Copyright & Legal Links */}
         <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © 2026 SwiftWay Logistics LLC.{' '}
-            <a 
-              href="https://facebook.com/musaddaqfaridtahir" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-amber-400 underline transition-colors"
-            >
-              All Rights Reserved
-            </a>
-            . Dedicated Freight Logistics.
+            © 2026 SwiftWay Logistics LLC. All Rights Reserved. Dedicated Freight Logistics.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/terms" className="hover:text-slate-300 transition-colors">

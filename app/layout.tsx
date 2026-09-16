@@ -14,7 +14,7 @@ export default function RootLayout({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth overflow-x-hidden">
       <head>
         <title>SWIFTWAY LOGISTICS | High-RPM Freight Dispatching for Owner-Operators & Fleets</title>
         <meta 
@@ -24,10 +24,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-amber-500 selection:text-white">
+      <body className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0F172A] antialiased selection:bg-amber-500 selection:text-white overflow-x-hidden w-full max-w-full">
         <Navbar onOpenModal={() => setIsModalOpen(true)} />
         
-        <main className="flex-grow">
+        <main className="flex-grow w-full max-w-full overflow-x-hidden">
           {children}
         </main>
 
