@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, FileText, CheckCircle2, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export default function TermsPage() {
   return (
@@ -16,7 +16,7 @@ export default function TermsPage() {
           Terms of Service & Representation Agreement
         </h1>
         <p className="text-xs text-slate-500 font-mono">
-          Effective Date: January 1, 2026 • SwiftWay Logistics LLC
+          Effective Date: January 1, 2026 • OTR Dispatch
         </p>
       </section>
 
@@ -24,24 +24,24 @@ export default function TermsPage() {
         <div className="space-y-3">
           <h2 className="text-lg font-bold text-[#0F172A]">1. Dispatch Representation Services</h2>
           <p>
-            SwiftWay Logistics LLC ("SwiftWay Logistics") acts as an authorized independent dispatching agent representing licensed Motor Carriers holding active FMCSA operating authority (USDOT / MC).
+            OTR Dispatch acts as an authorized independent dispatching agent providing dedicated logistics coordination for licensed motor carriers with active FMCSA registration (USDOT / MC).
           </p>
           <p>
-            Under this non-exclusive agreement, SwiftWay Logistics searches load boards, negotiates Rate Confirmations with licensed freight brokers, and processes paperwork on behalf of the Motor Carrier.
+            Under this non-exclusive agreement, OTR Dispatch searches premier load boards, negotiates top-paying Rate Confirmations with reputable freight brokers, and manages back-office paperwork on behalf of the carrier.
           </p>
         </div>
 
         <div className="space-y-3 border-t border-slate-100 pt-6">
           <h2 className="text-lg font-bold text-[#0F172A]">2. Zero Forced Dispatch Policy</h2>
           <p>
-            The Motor Carrier retains 100% right of refusal on any load offered by SwiftWay Logistics. The Motor Carrier is never required or coerced into accepting any rate, load weight, or lane destination.
+            The carrier retains 100% right of refusal on any load offered by OTR Dispatch. Drivers and fleet owners are never required or pressured into accepting any rate, load weight, or lane destination.
           </p>
         </div>
 
         <div className="space-y-3 border-t border-slate-100 pt-6">
-          <h2 className="text-lg font-bold text-[#0F172A]">3. FMCSA 49 CFR Part 371 Compliance</h2>
+          <h2 className="text-lg font-bold text-[#0F172A]">3. Broker Rate Confirmation & Direct Carrier Billing</h2>
           <p>
-            SwiftWay Logistics LLC does not hold itself out as a freight broker and does not tender or transport freight under its own authority. All Rate Confirmations are issued directly from licensed freight brokers to the Motor Carrier.
+            All load bookings and Rate Confirmations are secured directly between licensed freight brokers and the contracted carrier. Brokers remit freight payments directly to the carrier's factoring company or designated bank account.
           </p>
         </div>
 

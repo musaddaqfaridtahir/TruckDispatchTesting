@@ -1,0 +1,32 @@
+[
+  {
+    "flat_fee": "$250 / week",
+    "rate_percentage": "5% - 7%",
+    "avg_rpm": "$3.15/mi avg",
+    "equipment_type": "53' Dry Van"
+  },
+  {
+    "flat_fee": "$275 / week",
+    "rate_percentage": "6% - 8%",
+    "avg_rpm": "$4.90/mi avg",
+    "equipment_type": "Reefer (Temp-Controlled)"
+  },
+  {
+    "flat_fee": "$275 / week",
+    "rate_percentage": "6% - 8%",
+    "avg_rpm": "$4.85/mi avg",
+    "equipment_type": "Flatbed"
+  },
+  {
+    "flat_fee": "$300 / week",
+    "rate_percentage": "7% - 9%",
+    "avg_rpm": "$4.85/mi avg",
+    "equipment_type": "Step Deck"
+  },
+  {
+    "flat_fee": "$250 / week",
+    "rate_percentage": "8% - 10%",
+    "avg_rpm": "$1.50 to $1.95/mi avg",
+    "equipment_type": "Box Truck (26')"
+  }
+]

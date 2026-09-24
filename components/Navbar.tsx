@@ -53,21 +53,21 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             <span className="hidden md:inline-block text-slate-600">|</span>
             <span className="hidden md:flex items-center gap-1 text-slate-300">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              FMCSA Verified Dispatcher & Carrier Agent
+              Independent Freight Dispatch Service
             </span>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <span className="hidden lg:flex items-center gap-1 text-slate-300">
               <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              24/7 Emergency Load Desk Support
+              24/7 Dedicated Dispatch Desk
             </span>
             <a 
-              href="tel:+923119811007" 
+              href="tel:+12812030890" 
               className="flex items-center gap-1.5 text-white font-bold hover:text-amber-400 transition-colors bg-slate-800/80 px-2.5 py-1 rounded border border-slate-700 text-[11px] sm:text-xs shrink-0"
             >
               <Phone className="w-3 h-3 text-amber-500 shrink-0" />
-              <span>+92 311 9811007</span>
+              <span>+1 (281) 203-0890</span>
             </a>
           </div>
         </div>
@@ -84,10 +84,10 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             </div>
             <div className="flex flex-col min-w-0">
               <span className="text-base sm:text-xl font-extrabold tracking-tight sm:tracking-wider text-white flex items-center truncate">
-                SWIFTWAY<span className="text-amber-500">LOGISTICS</span>
+                OTR<span className="text-amber-500">DISPATCH</span>
               </span>
               <span className="text-[9px] sm:text-[10px] text-slate-400 tracking-wider uppercase font-semibold">
-                Freight & Logistics Desk
+                Independent Freight Dispatch
               </span>
             </div>
           </Link>
@@ -113,7 +113,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           </div>
 
           {/* Right Action Buttons (Desktop) */}
-          <div className="hidden sm:flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               href="/onboarding"
               className="hidden xl:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-300 hover:text-amber-400 bg-slate-800/60 hover:bg-slate-800 rounded-lg border border-slate-700/80 transition-colors"
@@ -133,7 +133,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           </div>
 
           {/* Mobile Actions: Always visible Onboard Button + Hamburger */}
-          <div className="flex lg:hidden items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex lg:hidden items-center gap-2 shrink-0">
             <Link
               href="/onboarding"
               className="flex items-center gap-1 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 active:scale-95 text-white px-2.5 py-1.5 rounded-lg text-xs font-bold shadow-md shadow-amber-600/20 transition-all border border-amber-500/40 shrink-0"
@@ -142,8 +142,9 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
               <span>Onboard</span>
             </Link>
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 sm:p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 active:scale-95 transition-all shrink-0 border border-slate-700/60"
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="p-1.5 sm:p-2 rounded-lg bg-slate-800 text-slate-200 hover:text-white hover:bg-slate-700 active:scale-95 transition-all shrink-0 border border-slate-700/80 cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-500"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
@@ -173,12 +174,24 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
             })}
             
             <div className="pt-4 mt-2 border-t border-slate-800 flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenModal();
+                }}
+                className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 text-white font-bold rounded-lg shadow-lg text-sm cursor-pointer border border-amber-500/50"
+              >
+                <FileText className="w-4 h-4" />
+                <span>Get Dispatched</span>
+              </button>
+
               <a
-                href="tel:+923119811007"
+                href="tel:+12812030890"
                 className="flex items-center justify-center gap-2 w-full py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg border border-slate-700 text-sm"
               >
                 <Phone className="w-4 h-4 text-amber-500" />
-                <span>Call Dispatch: +92 311 9811007</span>
+                <span>Call Dispatch: +1 (281) 203-0890</span>
               </a>
               
               <Link

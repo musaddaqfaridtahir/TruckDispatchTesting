@@ -6,6 +6,7 @@ import {
   FileText, ShieldCheck, DollarSign, Clock, PhoneCall, 
   ChevronRight, CheckCircle2, Award, Zap, HelpCircle, ArrowRight 
 } from 'lucide-react';
+import Pricing from '@/components/Pricing';
 
 export default function ServicesPage() {
   const services = [
@@ -49,48 +50,13 @@ export default function ServicesPage() {
       title: "FMCSA Safety & DOT Compliance Monitoring",
       desc: "Stay compliant with federal trucking guidelines. We track your HOS (Hours of Service) availability, keep your USDOT/MC profile updated, and assist with biennial MCS-150 filings and IFTA reporting guidance.",
       features: [
-        "FMCSA 49 CFR Part 371 representation agreement",
+        "Independent carrier representation agreement",
         "DOT audit prep & safety record maintenance",
         "Annual MCS-150 update reminders",
         "Certificate of Insurance (COI) holder updates",
       ],
       icon: ShieldCheck,
       badge: "DOT Audit Ready",
-    },
-  ];
-
-  const pricingPlans = [
-    {
-      name: "Standard Percentage Plan",
-      price: "5% - 7%",
-      period: "per booked Rate Con",
-      highlight: "Most Popular For Owner-Operators",
-      popular: true,
-      features: [
-        "Pay ONLY when you haul — $0 initial sign-up fee",
-        "Dedicated 1-on-1 freight dispatcher",
-        "Aggressive Rate Con negotiation",
-        "Broker credit checks via Carrier411",
-        "Same-day factoring & BOL submission",
-        "No long-term binding contracts",
-      ],
-      cta: "Choose Percentage Option",
-    },
-    {
-      name: "Flat-Rate Weekly Plan",
-      price: "$250",
-      period: "per truck / week",
-      highlight: "Best For High-Grossing Fleets",
-      popular: false,
-      features: [
-        "Fixed predictable cost regardless of gross revenue",
-        "Dedicated dispatcher for high-volume lanes",
-        "Unlimited load searches & rate con negotiations",
-        "Complete back-office & factoring management",
-        "Ideal for Reefer & Flatbed operators ($10k+/wk)",
-        "Cancel anytime with 7 days notice",
-      ],
-      cta: "Choose Flat-Rate Option",
     },
   ];
 
@@ -107,7 +73,7 @@ export default function ServicesPage() {
           Comprehensive Freight & Carrier Dispatching Services
         </h1>
         <p className="text-slate-600 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
-          From high-paying rate con negotiations to factoring paper setup, SwiftWay Logistics acts as your full-service back office so you can focus entirely on driving safely.
+          From high-paying rate con negotiations to factoring paper setup, OTR Dispatch acts as your full-service back office so you can focus entirely on driving safely.
         </p>
       </section>
 
@@ -152,72 +118,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 3. PRICING STRUCTURE SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0F172A] text-white rounded-3xl p-8 sm:p-12 border border-slate-800 space-y-12">
-          
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-extrabold text-amber-400 uppercase tracking-widest bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
-              Transparent Pricing
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              Flexible Dispatch Fee Options
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm">
-              No hidden fees, no forced long-term contracts. Choose between percentage-based or flat weekly options.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {pricingPlans.map((plan, idx) => (
-              <div 
-                key={idx}
-                className={`p-8 rounded-3xl border relative flex flex-col justify-between space-y-6 ${
-                  plan.popular 
-                    ? 'bg-slate-900 border-amber-500 shadow-2xl ring-1 ring-amber-500' 
-                    : 'bg-slate-900/60 border-slate-800'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-600 text-white font-bold text-[11px] uppercase tracking-wider px-4 py-1 rounded-full shadow-md">
-                    {plan.highlight}
-                  </div>
-                )}
-
-                <div className="space-y-4">
-                  <div className="text-lg font-bold text-white">{plan.name}</div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl sm:text-5xl font-black text-amber-400">{plan.price}</span>
-                    <span className="text-xs text-slate-400">{plan.period}</span>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 text-xs border-t border-b border-slate-800 py-6">
-                  {plan.features.map((feat, fIdx) => (
-                    <li key={fIdx} className="flex items-center gap-2.5 text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/onboarding"
-                  className={`w-full py-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all ${
-                    plan.popular
-                      ? 'bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white shadow-lg shadow-amber-600/30'
-                      : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
-                  }`}
-                >
-                  <span>{plan.cta}</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      {/* 3. DYNAMIC PRICING STRUCTURE SECTION */}
+      <Pricing />
 
       {/* 4. CALL TO ACTION SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -238,11 +140,11 @@ export default function ServicesPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="tel:+923119811007"
+              href="tel:+12812030890"
               className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm rounded-xl border border-white/30 flex items-center justify-center gap-2 transition-all"
             >
               <PhoneCall className="w-4 h-4 text-white" />
-              <span>Speak With Dispatcher: +92 311 9811007</span>
+              <span>Speak With Dispatcher: +1 (281) 203-0890</span>
             </a>
           </div>
         </div>

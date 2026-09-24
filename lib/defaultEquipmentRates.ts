@@ -1,0 +1,29 @@
+export interface EquipmentRate {
+  id?: string;
+  equipment_type: string;
+  rate_per_mile: string;
+  updated_at?: string;
+}
+
+export const DEFAULT_EQUIPMENT_RATES: EquipmentRate[] = [
+  {
+    equipment_type: "Dry Van 53'",
+    rate_per_mile: "$3.15/mi avg",
+  },
+  {
+    equipment_type: "Reefer (Temp Controlled)",
+    rate_per_mile: "$4.90/mi avg",
+  },
+  {
+    equipment_type: "Flatbed & Step Deck",
+    rate_per_mile: "$4.85/mi avg",
+  },
+  {
+    equipment_type: "Power Only",
+    rate_per_mile: "$3.35 to $4.80/mi avg",
+  },
+  {
+    equipment_type: "Box Truck 26'",
+    rate_per_mile: "$1.50 to $1.95/mi avg",
+  },
+];

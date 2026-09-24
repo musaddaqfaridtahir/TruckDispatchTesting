@@ -16,7 +16,7 @@ export default function PrivacyPage() {
           Privacy Policy & Carrier Data Protection
         </h1>
         <p className="text-xs text-slate-500 font-mono">
-          Effective Date: January 1, 2026 • SwiftWay Logistics LLC
+          Effective Date: January 1, 2026 • OTR Dispatch (https://otrdispach.us)
         </p>
       </section>
 
@@ -24,14 +24,14 @@ export default function PrivacyPage() {
         <div className="space-y-3">
           <h2 className="text-lg font-bold text-[#0F172A]">1. Information We Collect</h2>
           <p>
-            To provide freight dispatching services, SwiftWay Logistics LLC collects carrier information including Company Name, Contact Person, Phone Number, Email Address, USDOT/MC Numbers, W-9 Tax Forms, and Certificate of Insurance (COI) records.
+            To provide freight dispatching services, OTR Dispatch collects carrier information including Company Name, Contact Person, Phone Number, Email Address, USDOT/MC Numbers, W-9 Tax Forms, and Certificate of Insurance (COI) records.
           </p>
         </div>
 
         <div className="space-y-3 border-t border-slate-100 pt-6">
           <h2 className="text-lg font-bold text-[#0F172A]">2. Zero Data Sale Pledge</h2>
           <p>
-            SwiftWay Logistics LLC strictly pledges NEVER to sell, rent, or trade your carrier records, driver contact information, or equipment details to third-party advertisers. Your information is used exclusively for load booking and broker setup.
+            OTR Dispatch strictly pledges NEVER to sell, rent, or trade your carrier records, driver contact information, or equipment details to third-party advertisers. Your information is used exclusively for load booking and broker setup.
           </p>
         </div>
 

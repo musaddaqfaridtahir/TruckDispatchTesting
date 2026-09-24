@@ -72,7 +72,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
               <div className="space-y-2">
                 <h3 className="text-2xl font-extrabold text-white">Setup Request Received!</h3>
                 <p className="text-sm text-slate-300 max-w-md mx-auto">
-                  Our Senior Senior Logistics Dispatcher is reviewing your MC/DOT <span className="text-amber-400 font-bold">#{formData.mcNumber || 'Submitted'}</span> and checking premium load matches in your lanes.
+                  Our Senior Freight Dispatcher is reviewing your carrier credentials and matching top-paying loads in your preferred lanes.
                 </p>
               </div>
 
@@ -87,7 +87,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Assigned Desk:</span>
-                  <span className="font-semibold text-white">24/7 Priority Lane Team</span>
+                  <span className="font-semibold text-white">24/7 Dedicated Dispatch Desk</span>
                 </div>
               </div>
 
@@ -147,7 +147,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
                   <input
                     type="tel"
                     required
-                    placeholder="+92 311 9811007"
+                    placeholder="+1 (281) 203-0890"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"

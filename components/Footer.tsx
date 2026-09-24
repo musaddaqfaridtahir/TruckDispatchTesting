@@ -1,10 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Truck, Phone, Mail, MapPin, ShieldCheck, FileCheck, ExternalLink, Clock, AlertTriangle } from 'lucide-react';
+import { DEFAULT_EQUIPMENT_RATES, EquipmentRate } from '@/lib/defaultEquipmentRates';
 
 export default function Footer() {
+  const [equipmentRates, setEquipmentRates] = useState<EquipmentRate[]>(DEFAULT_EQUIPMENT_RATES);
+
+  useEffect(() => {
+    async function loadRates() {
+      try {
+        const res = await fetch('/api/equipment-rates');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && Array.isArray(json.rates) && json.rates.length > 0) {
+            setEquipmentRates(json.rates);
+          }
+        }
+      } catch (err) {
+        console.warn('Fallback to default equipment rates:', err);
+      }
+    }
+    loadRates();
+  }, []);
   return (
     <footer className="bg-[#0F172A] text-slate-300 border-t border-slate-800 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,10 +39,10 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-extrabold tracking-wider text-white">
-                  SWIFTWAY<span className="text-amber-500">LOGISTICS</span>
+                  OTR<span className="text-amber-500">DISPATCH</span>
                 </span>
                 <span className="text-[10px] text-slate-400 tracking-widest uppercase font-semibold">
-                  Freight & Logistics Desk
+                  Independent Freight Dispatch
                 </span>
               </div>
             </div>
@@ -35,11 +54,11 @@ export default function Footer() {
             <div className="pt-2 space-y-2">
               <div className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>USDOT #3891402 | MC #1428590</span>
+                <span>Independent Freight Dispatch Service</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
                 <Clock className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>24/7/365 Dispatch & Load Desk</span>
+                <span>24/7/365 Dedicated Dispatch Desk</span>
               </div>
             </div>
           </div>
@@ -99,26 +118,12 @@ export default function Footer() {
               Equipment & Lanes
             </h3>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li className="flex items-center justify-between bg-slate-900/40 p-2 rounded border border-slate-800/80">
-                <span className="text-slate-200 font-medium">Dry Van 53'</span>
-                <span className="text-emerald-400 font-bold">$3.15/mi avg</span>
-              </li>
-              <li className="flex items-center justify-between bg-slate-900/40 p-2 rounded border border-slate-800/80">
-                <span className="text-slate-200 font-medium">Reefer (Temp Controlled)</span>
-                <span className="text-emerald-400 font-bold">$3.85/mi avg</span>
-              </li>
-              <li className="flex items-center justify-between bg-slate-900/40 p-2 rounded border border-slate-800/80">
-                <span className="text-slate-200 font-medium">Flatbed & Step Deck</span>
-                <span className="text-emerald-400 font-bold">$3.65/mi avg</span>
-              </li>
-              <li className="flex items-center justify-between bg-slate-900/40 p-2 rounded border border-slate-800/80">
-                <span className="text-slate-200 font-medium">Power Only</span>
-                <span className="text-emerald-400 font-bold">$2.95/mi avg</span>
-              </li>
-              <li className="flex items-center justify-between bg-slate-900/40 p-2 rounded border border-slate-800/80">
-                <span className="text-slate-200 font-medium">Box Truck 26'</span>
-                <span className="text-emerald-400 font-bold">$2.80/mi avg</span>
-              </li>
+              {equipmentRates.map((item, idx) => (
+                <li key={item.equipment_type || idx} className="flex items-center justify-between bg-slate-900/40 p-2 rounded border border-slate-800/80">
+                  <span className="text-slate-200 font-medium">{item.equipment_type}</span>
+                  <span className="text-emerald-400 font-bold">{item.rate_per_mile}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -130,24 +135,24 @@ export default function Footer() {
 
             <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-4 rounded-xl border border-slate-700 space-y-3">
               <a 
-                href="tel:+923119811007" 
+                href="tel:+12812030890" 
                 className="flex items-center gap-3 text-white hover:text-amber-400 transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-amber-600/20 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-colors shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">24/7 Toll-Free Line</div>
-                  <div className="text-base font-extrabold text-white">+92 311 9811007</div>
+                  <div className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">24/7 Dispatch Hotline</div>
+                  <div className="text-base font-extrabold text-white">+1 (281) 203-0890</div>
                 </div>
               </a>
 
               <a 
-                href="mailto:dispatch@swiftwaylogistics.com" 
+                href="mailto:dispatch@otrdispach.us" 
                 className="flex items-center gap-3 text-xs text-slate-300 hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4 text-amber-500 shrink-0" />
-                <span className="truncate">dispatch@swiftwaylogistics.com</span>
+                <span className="truncate">dispatch@otrdispach.us</span>
               </a>
 
               <div className="flex items-start gap-3 text-xs text-slate-400 pt-1 border-t border-slate-800">
@@ -159,16 +164,16 @@ export default function Footer() {
 
         </div>
 
-        {/* FMCSA Disclaimer Section */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 mb-8">
+        {/* Professional Legal Disclaimer Section */}
+        <div className="bg-slate-900/60 border border-slate-800/80 rounded-xl p-4 mb-8">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+            <ShieldCheck className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
             <div className="text-xs text-slate-400 leading-relaxed space-y-1">
-              <p className="font-bold text-slate-200 uppercase tracking-wide">
-                FMCSA Regulatory & Legal Dispatch Disclaimer
+              <p className="font-bold text-slate-300 uppercase tracking-wider text-[11px]">
+                Independent Freight Dispatch Notice
               </p>
               <p>
-                SwiftWay Logistics LLC acts strictly as an authorized independent dispatching agent representing licensed Motor Carriers holding active FMCSA operating authority (USDOT / MC). We provide load booking, broker negotiation, invoicing, and rate confirmation processing under carrier-dispatcher representation agreements (49 CFR Part 371 compliant). SwiftWay Logistics LLC is not a freight broker and does not hold or tender freight under its own authority.
+                OTR Dispatch is an independent freight dispatch service provider. We are neither a property broker nor a motor carrier. We operate strictly as an administrative agent under the active operating authority (MC/DOT) of our contracted carriers in full compliance with FMCSA regulations.
               </p>
             </div>
           </div>
@@ -177,7 +182,7 @@ export default function Footer() {
         {/* Bottom Copyright & Legal Links */}
         <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © 2026 SwiftWay Logistics LLC. All Rights Reserved. Dedicated Freight Logistics.
+            © 2026 OTR Dispatch. All Rights Reserved. Independent Freight Dispatch Service.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/terms" className="hover:text-slate-300 transition-colors">

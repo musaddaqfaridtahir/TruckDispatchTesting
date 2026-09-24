@@ -73,7 +73,7 @@ export default function AdminDashboardPage() {
       if (data.success && Array.isArray(data.carriers)) {
         // Map backend properties
         const mapped: CarrierLead[] = data.carriers.map((item: any) => ({
-          id: item.carrier_id || item.id || `SWIFT-${Math.floor(100000 + Math.random() * 900000)}`,
+          id: item.carrier_id || item.id || `OTR-${Math.floor(100000 + Math.random() * 900000)}`,
           companyName: item.company_name || item.companyName || 'Unknown LLC',
           contactPerson: item.contact_person || item.contactPerson || 'Driver',
           phone: item.phone || '(800) 555-0000',
@@ -111,11 +111,12 @@ export default function AdminDashboardPage() {
   // Handle Login Authentication
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput.trim() === 'swiftway2026' || passwordInput.trim() === 'admin') {
+    const entered = passwordInput.trim();
+    if (entered === 'otrdispatch2026' || entered === 'admin') {
       setIsAuthenticated(true);
       setAuthError('');
     } else {
-      setAuthError('Invalid passcode. Use "swiftway2026" or "admin" to enter.');
+      setAuthError('Invalid passcode. Use "otrdispatch2026" or "admin" to enter.');
     }
   };
 
@@ -212,13 +213,13 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-2xl font-extrabold text-white">SwiftWay Logistics Admin Portal</h1>
+            <h1 className="text-2xl font-extrabold text-white">OTR Dispatch Admin Portal</h1>
             <p className="text-xs text-slate-400">Enter internal passcode to manage real-time carrier database.</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4 text-left">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Passcode (Use "swiftway2026" or "admin")</label>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">Passcode (Use "otrdispatch2026" or "admin")</label>
               <input
                 type="password"
                 required
@@ -241,9 +242,13 @@ export default function AdminDashboardPage() {
             </button>
           </form>
 
-          <div className="pt-2">
-            <Link href="/" className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
+          <div className="pt-2 flex justify-center gap-4 text-xs text-slate-500">
+            <Link href="/" className="hover:text-slate-300 transition-colors">
               ← Return to Main Website
+            </Link>
+            <span>•</span>
+            <Link href="/admin/rates" className="hover:text-amber-400 transition-colors">
+              Rates Editor
             </Link>
           </div>
         </div>
@@ -260,7 +265,7 @@ export default function AdminDashboardPage() {
           <div className="space-y-1 text-center sm:text-left">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-3 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>SwiftWay Logistics Console</span>
+              <span>OTR Dispatch Console</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
               Carrier Onboarding Management
@@ -268,6 +273,12 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="flex items-center gap-3">
+            <Link
+              href="/admin/rates"
+              className="px-3.5 py-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 rounded-xl border border-amber-500/30 text-xs font-bold transition-colors"
+            >
+              Edit Dynamic Rates ↗
+            </Link>
             <button
               onClick={fetchCarriers}
               className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 text-xs font-bold transition-colors flex items-center gap-1.5"

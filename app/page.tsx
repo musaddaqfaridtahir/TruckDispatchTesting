@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Truck, ShieldCheck, DollarSign, TrendingUp, FileText, 
@@ -8,13 +8,37 @@ import {
   Zap, Package, Box, Layers, Sliders, ArrowRight, Award, HelpCircle
 } from 'lucide-react';
 import DispatchModal from '@/components/DispatchModal';
+import { DEFAULT_EQUIPMENT_RATES, EquipmentRate } from '@/lib/defaultEquipmentRates';
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [equipmentRates, setEquipmentRates] = useState<EquipmentRate[]>(DEFAULT_EQUIPMENT_RATES);
+
+  useEffect(() => {
+    async function loadRates() {
+      try {
+        const res = await fetch('/api/equipment-rates');
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && Array.isArray(json.rates) && json.rates.length > 0) {
+            setEquipmentRates(json.rates);
+          }
+        }
+      } catch (err) {
+        console.warn('Fallback to default equipment rates:', err);
+      }
+    }
+    loadRates();
+  }, []);
+
+  const getRate = (equip: string, fallback: string) => {
+    const found = equipmentRates.find((r) => r.equipment_type.toLowerCase().includes(equip.toLowerCase()));
+    return found ? found.rate_per_mile : fallback;
+  };
 
   // Interactive Calculator state
   const [weeklyMiles, setWeeklyMiles] = useState<number>(2500);
-  const [ratePerMile, setRatePerMile] = useState<number>(3.40);
+  const [ratePerMile, setRatePerMile] = useState<number>(3.15);
   const [dispatchFeePct, setDispatchFeePct] = useState<number>(5.0);
 
   // Calculated values
@@ -23,13 +47,13 @@ export default function HomePage() {
   const netCarrierEarnings = grossWeeklyRevenue - dispatchFeeAmount;
   const annualGrossRevenue = grossWeeklyRevenue * 50; // 50 working weeks
 
-  // Live Load Board Ticker Data
+  // Live Load Board Ticker Data - dynamically synced with equipment rates
   const loadTicker = [
-    { origin: 'Dallas, TX', dest: 'Atlanta, GA', equip: "53' Dry Van", rate: '$3,550', rpm: '$3.80/mi', status: 'Booked' },
-    { origin: 'Chicago, IL', dest: 'Columbus, OH', equip: 'Reefer', rate: '$2,950', rpm: '$4.20/mi', status: 'Dispatched' },
-    { origin: 'Houston, TX', dest: 'Phoenix, AZ', equip: 'Flatbed', rate: '$4,350', rpm: '$3.65/mi', status: 'Booked' },
-    { origin: 'Atlanta, GA', dest: 'Memphis, TN', equip: 'Box Truck', rate: '$1,950', rpm: '$3.10/mi', status: 'In Transit' },
-    { origin: 'Savannah, GA', dest: 'Charlotte, NC', equip: 'Power Only', rate: '$2,450', rpm: '$3.40/mi', status: 'Booked' },
+    { origin: 'Dallas, TX', dest: 'Atlanta, GA', equip: "53' Dry Van", rate: '$3,550', rpm: getRate("Dry Van", "$3.15/mi avg"), status: 'Booked' },
+    { origin: 'Chicago, IL', dest: 'Columbus, OH', equip: 'Reefer', rate: '$4,250', rpm: getRate("Reefer", "$4.90/mi avg"), status: 'Dispatched' },
+    { origin: 'Houston, TX', dest: 'Phoenix, AZ', equip: 'Flatbed', rate: '$4,350', rpm: getRate("Flatbed", "$4.85/mi avg"), status: 'Booked' },
+    { origin: 'Atlanta, GA', dest: 'Memphis, TN', equip: 'Box Truck', rate: '$1,950', rpm: getRate("Box Truck", "$1.50 to $1.95/mi avg"), status: 'In Transit' },
+    { origin: 'Savannah, GA', dest: 'Charlotte, NC', equip: 'Power Only', rate: '$2,450', rpm: getRate("Power Only", "$3.35 to $4.80/mi avg"), status: 'Booked' },
   ];
 
   // Truck types data
@@ -38,7 +62,7 @@ export default function HomePage() {
       title: "Dry Van (53')",
       desc: "General palletized freight & consumer goods across high-density national corridors.",
       payload: "Up to 45,000 lbs",
-      avgRpm: "$3.15 - $3.65 / mi",
+      avgRpm: getRate("Dry Van", "$3.15/mi avg"),
       icon: Truck,
       tag: "High Demand",
     },
@@ -46,7 +70,7 @@ export default function HomePage() {
       title: "Reefer (Temperature-Controlled)",
       desc: "Produce, meats, & temperature-sensitive cargo requiring continuous reefer log monitoring.",
       payload: "Up to 43,500 lbs",
-      avgRpm: "$3.60 - $4.35 / mi",
+      avgRpm: getRate("Reefer", "$4.90/mi avg"),
       icon: Package,
       tag: "Top RPM",
     },
@@ -54,7 +78,7 @@ export default function HomePage() {
       title: "Flatbed & Step Deck",
       desc: "Building materials, steel coils, machinery, overdimensional & pipe loads.",
       payload: "Up to 48,000 lbs",
-      avgRpm: "$3.40 - $4.10 / mi",
+      avgRpm: getRate("Flatbed", "$4.85/mi avg"),
       icon: Layers,
       tag: "Premium Freight",
     },
@@ -62,7 +86,7 @@ export default function HomePage() {
       title: "Box Truck (26' Straight Truck)",
       desc: "Expedited LTL, regional dock-to-dock, and local distribution loads.",
       payload: "Up to 10,000 lbs",
-      avgRpm: "$2.60 - $3.25 / mi",
+      avgRpm: getRate("Box Truck", "$1.50 to $1.95/mi avg"),
       icon: Box,
       tag: "Fast Turnaround",
     },
@@ -70,7 +94,7 @@ export default function HomePage() {
       title: "Power Only",
       desc: "Tractor-only hauling of pre-loaded trailers, Amazon relay, & drayage units.",
       payload: "Tractor Unit Only",
-      avgRpm: "$2.85 - $3.35 / mi",
+      avgRpm: getRate("Power Only", "$3.35 to $4.80/mi avg"),
       icon: ShieldCheck,
       tag: "Drop & Hook",
     },
@@ -121,7 +145,7 @@ export default function HomePage() {
               
               <div className="inline-flex items-center gap-2 bg-slate-800/90 border border-slate-700 text-amber-400 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-inner">
                 <ShieldCheck className="w-4 h-4 text-amber-500" />
-                <span>FMCSA Compliant Dispatch • US Owner-Operators & Fleets</span>
+                <span>Independent Freight Dispatch Service • 48-State Coverage</span>
               </div>
 
               {/* Direct Headline */}
@@ -146,18 +170,20 @@ export default function HomePage() {
                 </button>
 
                 <a
-                  href="tel:+923119811007"
+                  href="tel:+12812030890"
                   className="w-full sm:w-auto px-6 py-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl border border-slate-700 flex items-center justify-center gap-3 transition-all text-base"
                 >
                   <PhoneCall className="w-5 h-5 text-amber-500" />
-                  <span>Call Dispatch: +92 311 9811007</span>
+                  <span>Call Dispatch: +1 (281) 203-0890</span>
                 </a>
               </div>
 
               {/* Dynamic Stats Ticker Bar */}
               <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-800/80">
                 <div className="bg-slate-900/60 p-3 rounded-xl border border-slate-800 text-center lg:text-left">
-                  <div className="text-2xl font-black text-amber-500">$3.40/mi</div>
+                  <div className="text-2xl font-black text-amber-500">
+                    {getRate("Dry Van", "$3.15/mi avg").split(' ')[0]}
+                  </div>
                   <div className="text-[11px] text-slate-400 font-medium">Avg Freight Rate</div>
                 </div>
 
@@ -361,17 +387,18 @@ export default function HomePage() {
                   </div>
                   <input
                     type="range"
-                    min={2.00}
-                    max={4.50}
+                    min={1.50}
+                    max={5.50}
                     step={0.05}
                     value={ratePerMile}
                     onChange={(e) => setRatePerMile(parseFloat(e.target.value))}
                     className="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
                   />
                   <div className="flex justify-between text-[11px] text-slate-500 font-mono">
-                    <span>$2.00/mi</span>
-                    <span>$3.25/mi</span>
-                    <span>$4.50/mi</span>
+                    <span>$1.50/mi (Box)</span>
+                    <span>$3.15/mi (Dry Van)</span>
+                    <span>$4.90/mi (Reefer)</span>
+                    <span>$5.50/mi</span>
                   </div>
                 </div>
 
@@ -428,7 +455,7 @@ export default function HomePage() {
                   <span className="font-bold text-white">${grossWeeklyRevenue.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-slate-300">
-                  <span>SwiftWay Logistics Fee ({dispatchFeePct}%):</span>
+                  <span>OTR Dispatch Fee ({dispatchFeePct}%):</span>
                   <span className="font-bold text-rose-400">-${dispatchFeeAmount.toLocaleString('en-US', { maximumFractionDigits: 0 })}</span>
                 </div>
                 <div className="pt-2 border-t border-slate-800 flex justify-between text-sm font-extrabold">

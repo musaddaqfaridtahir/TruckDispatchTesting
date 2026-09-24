@@ -39,7 +39,7 @@ export default function AboutPage() {
       home: "Dallas, TX",
       weeklyGross: "$8,950 / wk",
       rating: 5,
-      review: "SwiftWay Logistics changed the game for my 1-truck operation. They got me out of $2.20 cheap freight and built a consistent Midwest route averaging $3.45/mile.",
+      review: "OTR Dispatch changed the game for my 1-truck operation. They got me out of $2.20 cheap freight and built a consistent Midwest route averaging $3.45/mile.",
     },
     {
       name: "Derrick & Sarah Miller",
@@ -48,7 +48,7 @@ export default function AboutPage() {
       home: "Atlanta, GA",
       weeklyGross: "$11,200 / wk",
       rating: 5,
-      review: "Running produce requires quick response times. SwiftWay Logistics handles all factoring packets and COI updates so we just drive and collect QuickPay.",
+      review: "Running produce requires quick response times. OTR Dispatch handles all factoring packets and COI updates so we just drive and collect QuickPay.",
     },
     {
       name: "Antoine Jackson",
@@ -57,7 +57,7 @@ export default function AboutPage() {
       home: "Birmingham, AL",
       weeklyGross: "$10,400 / wk",
       rating: 5,
-      review: "No forced dispatch is 100% real with SwiftWay Logistics. If a steel load doesn't pay $3.50+, my dispatcher keeps searching until we get the right Rate Con.",
+      review: "No forced dispatch is 100% real with OTR Dispatch. If a steel load doesn't pay $3.50+, my dispatcher keeps searching until we get the right Rate Con.",
     },
     {
       name: "Carlos Reyes",
@@ -66,7 +66,7 @@ export default function AboutPage() {
       home: "Phoenix, AZ",
       weeklyGross: "$7,800 / wk",
       rating: 5,
-      review: "I run Power Only across the Southwest. SwiftWay Logistics keeps my deadhead under 40 miles per trip. Best 5% investment I have made for my business.",
+      review: "I run Power Only across the Southwest. OTR Dispatch keeps my deadhead under 40 miles per trip. Best 5% investment I have made for my business.",
     },
     {
       name: "Terry Jenkins",
@@ -75,7 +75,7 @@ export default function AboutPage() {
       home: "Charlotte, NC",
       weeklyGross: "$6,900 / wk",
       rating: 5,
-      review: "Finding solid dock loads for a 26' box truck is tough on public load boards. SwiftWay Logistics has direct relationships with expedited freight brokers.",
+      review: "Finding solid dock loads for a 26' box truck is tough on public load boards. OTR Dispatch has direct relationships with expedited freight brokers.",
     },
     {
       name: "Samir & Harpreet Singh",
@@ -84,7 +84,7 @@ export default function AboutPage() {
       home: "Fresno, CA",
       weeklyGross: "$27,500 / wk (3 Trucks)",
       rating: 5,
-      review: "Managing 3 drivers was overwhelming until we assigned them to SwiftWay Logistics. Each driver gets a dedicated dispatcher who plans their backhauls in advance.",
+      review: "Managing 3 drivers was overwhelming until we assigned them to OTR Dispatch. Each driver gets a dedicated dispatcher who plans their backhauls in advance.",
     },
   ];
 
@@ -100,7 +100,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 bg-amber-500/20 text-amber-400 px-3.5 py-1.5 rounded-full text-xs font-bold border border-amber-500/30">
                 <Users className="w-4 h-4" />
-                <span>About SwiftWay Logistics</span>
+                <span>About OTR Dispatch</span>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
@@ -109,13 +109,13 @@ export default function AboutPage() {
 
               <div className="space-y-4 text-slate-300 text-xs sm:text-sm leading-relaxed">
                 <p>
-                  SwiftWay Logistics was founded by veteran freight dispatchers and former logistics managers who realized independent owner-operators were losing thousands of dollars every month to cheap freight, long deadhead miles, and aggressive broker tactics.
+                  OTR Dispatch was founded by veteran freight dispatchers and former logistics managers who realized independent owner-operators were losing thousands of dollars every month to cheap freight, long deadhead miles, and aggressive broker tactics.
                 </p>
                 <p>
                   Navigating the US freight market requires more than just refreshing DAT One or Truckstop load boards. It requires strategic route planning, aggressive rate con negotiations, broker credit checks, and prompt factoring paperwork handling.
                 </p>
                 <p>
-                  Today, SwiftWay Logistics represents hundreds of owner-operators and small fleet owners across all 48 lower states. We operate as your dedicated back office, keeping your wheels turning at maximum Rate Per Mile while you maintain 100% authority over your truck.
+                  Today, OTR Dispatch represents hundreds of owner-operators and small fleet owners across all 48 lower states. We operate as your dedicated back office, keeping your wheels turning at maximum Rate Per Mile while you maintain 100% authority over your truck.
                 </p>
               </div>
 
@@ -125,16 +125,16 @@ export default function AboutPage() {
                   className="px-6 py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-xs rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>Partner With SwiftWay Today</span>
+                  <span>Partner With OTR Dispatch Today</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <a
-                  href="tel:+923119811007"
+                  href="tel:+12812030890"
                   className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-colors"
                 >
                   <Clock className="w-4 h-4 text-amber-500" />
-                  <span>Call Operations: +92 311 9811007</span>
+                  <span>Call Operations: +1 (281) 203-0890</span>
                 </a>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
             <div className="lg:col-span-5 space-y-4">
               <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
                 <div className="text-xs uppercase tracking-wider text-slate-400 font-bold border-b border-slate-800 pb-3">
-                  SwiftWay Operating Track Record
+                  OTR Dispatch Operating Track Record
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -182,7 +182,7 @@ export default function AboutPage() {
             Our Guiding Pillars
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
-            Why Owner-Operators Stay With SwiftWay
+            Why Owner-Operators Stay With OTR Dispatch
           </h2>
           <p className="text-slate-600 text-xs sm:text-sm">
             We operate as an extension of your trucking business with complete financial integrity.
@@ -263,7 +263,7 @@ export default function AboutPage() {
               href="/onboarding"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-sm rounded-xl shadow-xl transition-all"
             >
-              <span>Join SwiftWay Logistics Carrier Network</span>
+              <span>Join OTR Dispatch Carrier Network</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

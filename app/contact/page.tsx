@@ -10,7 +10,7 @@ export default function ContactPage() {
   const faqs = [
     {
       question: "Do you force dispatch drivers on unwanted loads?",
-      answer: "Never. SwiftWay Logistics operates under a strict 100% Zero Forced Dispatch policy. You maintain final approval over every Rate Con, delivery window, and lane destination.",
+      answer: "Never. OTR Dispatch operates under a strict 100% Zero Forced Dispatch policy. You maintain final approval over every Rate Con, delivery window, and lane destination.",
     },
     {
       question: "How do factoring payments and QuickPay work?",
@@ -34,7 +34,7 @@ export default function ContactPage() {
           <span>24/7 Operations Desk</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A]">
-          Contact SwiftWay Operations
+          Contact OTR Dispatch Operations
         </h1>
         <p className="text-slate-600 max-w-2xl mx-auto text-xs sm:text-sm">
           Have questions about our dispatch service, rate per mile averages, or carrier representation setup? Contact our team anytime.
@@ -49,23 +49,23 @@ export default function ContactPage() {
             <h2 className="text-xl font-bold border-b border-slate-800 pb-3">Direct Dispatch Hotlines</h2>
 
             <div className="space-y-4">
-              <a href="tel:+923119811007" className="flex items-start gap-4 p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500 transition-colors">
+              <a href="tel:+12812030890" className="flex items-start gap-4 p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-amber-600/20 text-amber-500 flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">24/7 Toll-Free Line</div>
-                  <div className="text-lg font-extrabold text-white">+92 311 9811007</div>
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">24/7 Dispatch Hotline</div>
+                  <div className="text-lg font-extrabold text-white">+1 (281) 203-0890</div>
                 </div>
               </a>
 
-              <a href="mailto:dispatch@swiftwaylogistics.com" className="flex items-start gap-4 p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500 transition-colors">
+              <a href="mailto:dispatch@otrdispach.us" className="flex items-start gap-4 p-4 bg-slate-900 rounded-2xl border border-slate-800 hover:border-amber-500 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-amber-600/20 text-amber-500 flex items-center justify-center shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Dispatch Operations Email</div>
-                  <div className="text-xs font-bold text-white">dispatch@swiftwaylogistics.com</div>
+                  <div className="text-xs font-bold text-white">dispatch@otrdispach.us</div>
                 </div>
               </a>
 
@@ -90,7 +90,7 @@ export default function ContactPage() {
           <form onSubmit={(e) => { e.preventDefault(); setFormSubmitted(true); }} className="space-y-4 text-xs">
             {formSubmitted ? (
               <div className="p-6 bg-emerald-50 text-emerald-800 rounded-2xl font-bold text-center">
-                Thank you! A SwiftWay dispatcher will call your phone number shortly.
+                Thank you! An OTR Dispatch dispatcher will call your phone number shortly.
               </div>
             ) : (
               <>

@@ -34,7 +34,7 @@ export default function FleetsPage() {
           Owner-Operators & Fleet Solutions
         </h1>
         <p className="text-slate-600 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
-          Whether you are an independent driver running 1 truck or a fleet owner managing 10 rigs, SwiftWay Logistics provides custom dispatch solutions tailored to your operational scale.
+          Whether you are an independent driver running 1 truck or a fleet owner managing 10 rigs, OTR Dispatch provides custom dispatch solutions tailored to your operational scale.
         </p>
       </section>
 

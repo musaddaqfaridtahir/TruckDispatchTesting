@@ -34,7 +34,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const carrierTicketId = `SWIFT-${Math.floor(100000 + Math.random() * 900000)}`;
+    const carrierTicketId = `OTR-${Math.floor(100000 + Math.random() * 900000)}`;
 
     const carrierRecord = {
       carrier_id: carrierTicketId,
